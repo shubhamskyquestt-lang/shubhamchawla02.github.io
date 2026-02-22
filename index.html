@@ -9,37 +9,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Gold — warmer, more amber, less yellow */
   --gold:       #e2b97a;
   --gold-dim:   #9a7340;
   --gold-glow:  rgba(226,185,122,0.15);
   --gold-soft:  rgba(226,185,122,0.08);
-
-  /* Rose — desaturated, dusty, more elegant */
   --rose:       #c98a8a;
   --rose-dim:   #8f5e5e;
   --rose-glow:  rgba(201,138,138,0.14);
-
-  /* Backgrounds — cooler blacks, not pure warm dark */
   --bg:         #080a0d;
   --bg2:        #0e1015;
   --bg3:        #161820;
-
-  /* Surfaces — barely-there blue-tinted whites */
   --surface:    rgba(255,255,255,0.035);
   --surface2:   rgba(255,255,255,0.065);
   --surface3:   rgba(226,185,122,0.06);
-
-  /* Borders — gold-tinted but very subtle */
   --border:     rgba(226,185,122,0.10);
   --border2:    rgba(226,185,122,0.20);
   --border3:    rgba(226,185,122,0.32);
-
-  /* Text — slightly cooler white for contrast on dark blue-black */
   --text:       #ede8e0;
   --text-dim:   rgba(237,232,224,0.52);
   --text-muted: rgba(237,232,224,0.28);
-
   --nav-h:      72px;
 }
 
@@ -53,7 +41,7 @@ html, body {
   overflow: hidden;
 }
 
-/* ── SPLASH SCREEN ── */
+/* ── SPLASH ── */
 #splash {
   position: fixed; inset: 0; z-index: 999;
   background: radial-gradient(ellipse at 50% 55%, #0f1219 0%, var(--bg) 70%);
@@ -65,8 +53,7 @@ html, body {
 #splash.gone { opacity: 0; pointer-events: none; }
 
 .splash-heart {
-  font-size: 3.5rem;
-  color: var(--rose);
+  font-size: 3.5rem; color: var(--rose);
   filter: drop-shadow(0 0 32px rgba(201,138,138,0.65));
   opacity: 0;
   animation: splashHeart 1s ease 0.3s forwards;
@@ -76,47 +63,32 @@ html, body {
   60%  { transform:scale(1.15); }
   to   { opacity:1; transform:scale(1); }
 }
-
 .splash-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.8rem, 10vw, 5rem);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--gold);
-  opacity: 0;
-  letter-spacing: 3px;
-  margin-top: 20px;
-  animation: splashName 1s ease 0.9s forwards;
+  font-style: italic; font-weight: 300;
+  color: var(--gold); opacity: 0;
+  letter-spacing: 3px; margin-top: 20px;
+  animation: splashName 1s ease 0.7s forwards;
 }
 @keyframes splashName {
   from { opacity:0; transform:translateY(16px); }
   to   { opacity:1; transform:translateY(0); }
 }
-
 .splash-sub {
-  font-size: 0.78rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 16px;
-  opacity: 0;
-  animation: splashName 0.8s ease 1.5s forwards;
+  font-size: 0.78rem; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-top: 16px; opacity: 0;
+  animation: splashName 0.8s ease 1.1s forwards;
 }
-
 .splash-btn {
-  margin-top: 56px;
-  padding: 16px 48px;
-  border: 1px solid var(--border3);
-  border-radius: 50px;
-  background: var(--gold-soft);
-  color: var(--gold);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  cursor: pointer;
-  opacity: 0;
-  animation: splashName 0.8s ease 2s forwards;
+  margin-top: 56px; padding: 16px 48px;
+  border: 1px solid var(--border3); border-radius: 50px;
+  background: var(--gold-soft); color: var(--gold);
+  font-family: 'Inter', sans-serif; font-size: 0.85rem;
+  letter-spacing: 3px; text-transform: uppercase;
+  cursor: pointer; opacity: 0;
+  animation: splashName 0.8s ease 1.7s forwards;
   transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .splash-btn:hover {
@@ -133,28 +105,18 @@ html, body {
 }
 #app.visible { opacity: 1; }
 
-/* ── PAGES ── */
-#pages {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
+#pages { flex: 1; position: relative; overflow: hidden; }
 
 .page {
   position: absolute; inset: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: auto; overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  opacity: 0;
-  transform: translateX(30px);
+  opacity: 0; transform: translateX(30px);
   transition: opacity 0.45s ease, transform 0.45s ease;
   pointer-events: none;
   padding-bottom: calc(var(--nav-h) + 20px);
 }
-.page.active {
-  opacity: 1; transform: translateX(0);
-  pointer-events: all;
-}
+.page.active { opacity: 1; transform: translateX(0); pointer-events: all; }
 .page.exit-left  { opacity:0; transform:translateX(-30px); }
 .page.exit-right { opacity:0; transform:translateX(30px); }
 
@@ -167,82 +129,56 @@ html, body {
   -webkit-backdrop-filter: blur(24px);
   border-top: 1px solid var(--border2);
   display: flex; align-items: center; justify-content: space-around;
-  padding: 0 8px;
-  flex-shrink: 0;
+  padding: 0 8px; flex-shrink: 0;
 }
-
 .nav-item {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 5px; flex: 1;
-  padding: 8px 4px;
-  cursor: pointer;
-  border: none; background: transparent;
-  transition: all 0.25s ease;
-  position: relative;
+  gap: 5px; flex: 1; padding: 8px 4px;
+  cursor: pointer; border: none; background: transparent;
+  transition: all 0.25s ease; position: relative;
 }
-
 .nav-icon {
   font-size: 1.4rem;
   transition: transform 0.3s ease, filter 0.3s ease;
-  filter: grayscale(1) opacity(0.4);
-  line-height: 1;
+  filter: grayscale(1) opacity(0.4); line-height: 1;
 }
-
 .nav-label {
-  font-size: 0.62rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  transition: color 0.3s;
+  font-size: 0.62rem; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-muted); transition: color 0.3s;
 }
-
 .nav-item.active .nav-icon {
   filter: grayscale(0) opacity(1) drop-shadow(0 0 8px rgba(226,185,122,0.7));
   transform: translateY(-2px) scale(1.1);
 }
 .nav-item.active .nav-label { color: var(--gold); }
-
 .nav-pip {
   position: absolute; bottom: 4px;
   width: 4px; height: 4px; border-radius: 50%;
-  background: var(--gold);
-  opacity: 0; transition: opacity 0.3s;
+  background: var(--gold); opacity: 0; transition: opacity 0.3s;
 }
 .nav-item.active .nav-pip { opacity: 1; }
 
 /* ─────────────────────────────────────────
    PAGE 0 — INTRO / SCROLLYTELLING
 ───────────────────────────────────────── */
-#page-intro {
-  background: var(--bg);
-}
+#page-intro { background: var(--bg); }
 
-#scroll-story {
-  height: 650vh;
-  position: relative;
-}
+#scroll-story { height: 650vh; position: relative; }
 
 #story-sticky {
   position: sticky; top: 0;
-  height: 100svh;
-  width: 100%;
-  overflow: hidden;
+  height: 100svh; width: 100%; overflow: hidden;
 }
 
-#particle-canvas {
-  position: absolute; inset: 0;
-  pointer-events: none;
-}
+#particle-canvas { position:fixed; inset:0; pointer-events:none; z-index:0; }
 
 .scene {
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 40px 32px;
-  pointer-events: none;
+  padding: 40px 32px; pointer-events: none;
 }
-
 .scene-eyebrow {
   font-size: 0.72rem; letter-spacing: 5px;
   text-transform: uppercase; color: var(--gold);
@@ -276,13 +212,10 @@ html, body {
   margin-bottom: 28px;
   filter: drop-shadow(0 0 30px rgba(201,138,138,0.65));
 }
-
 .scene.active .scene-eyebrow,
 .scene.active .scene-headline,
 .scene.active .scene-sub   { opacity:1; transform:translateY(0); }
 .scene.active .scene-glyph { opacity:1; transform:scale(1); }
-
-/* accent line under headline */
 .scene-line {
   width: 0; height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
@@ -291,8 +224,7 @@ html, body {
 }
 .scene.active .scene-line { width: 120px; }
 
-/* story dots */
-#story-dots {
+#story-dots, #story-dots-2 {
   position: absolute; right: 22px; top: 50%;
   transform: translateY(-50%);
   display: flex; flex-direction: column; gap: 9px; z-index:10;
@@ -303,13 +235,11 @@ html, body {
   transition: background 0.4s, transform 0.4s, height 0.4s;
 }
 .sdot.active {
-  background: var(--gold);
-  transform: scale(1.4);
+  background: var(--gold); transform: scale(1.4);
   height: 14px; border-radius: 3px;
 }
 
-/* scroll hint */
-#scroll-hint {
+#scroll-hint, #scroll-hint-2 {
   position: absolute; bottom: 32px; left: 50%;
   transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 7px;
@@ -322,21 +252,196 @@ html, body {
   0%,100% { transform: translateX(-50%) translateY(0); }
   50%      { transform: translateX(-50%) translateY(7px); }
 }
-#scroll-hint svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:1.5; }
+#scroll-hint svg, #scroll-hint-2 svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:1.5; }
 
 /* ─────────────────────────────────────────
-   PAGE 1 — OUR STORY TIMELINE
+   PAGE 1 — OUR STORY SCROLLYTELLING
 ───────────────────────────────────────── */
 #page-story { background: var(--bg2); }
 
-.page-header {
-  padding: 56px 28px 32px;
-  text-align: center;
+/* The scrollytelling wrapper for story page */
+#story-scroll { height: 700vh; position: relative; }
+
+#story-sticky-2 {
+  position: sticky; top: 0;
+  height: calc(100svh - var(--nav-h));
+  width: 100%; overflow: hidden;
 }
-.page-header-eyebrow {
+
+/* Story scenes — image left, text right layout */
+.story-scene {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px 28px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.story-scene.active { opacity: 1; }
+
+/* Header scene — centered */
+.story-scene.centered {
+  flex-direction: column; text-align: center;
+}
+
+/* Split layout */
+.story-scene.split {
+  gap: 28px;
+}
+.story-scene.split.flipped { flex-direction: row-reverse; }
+
+/* Photo panel */
+.ss-photo-wrap {
+  flex: 0 0 auto;
+  width: min(62vw, 400px);
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px var(--gold-glow);
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.9s cubic-bezier(0.34,1.2,0.64,1) 0.1s,
+              box-shadow 0.9s ease 0.1s, opacity 0.7s ease;
+  opacity: 0;
+}
+.story-scene.active .ss-photo-wrap {
+  transform: translateY(0) scale(1); opacity: 1;
+}
+.ss-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--bg3), var(--surface3));
+  font-size: 2.5rem; gap: 8px; color: var(--gold-dim);
+}
+.ss-photo-placeholder span { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 1px; }
+
+.ss-photo {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; display: block;
+}
+
+/* Text panel */
+.ss-text {
+  flex: 1; min-width: 0;
+  transform: translateX(20px);
+  opacity: 0;
+  transition: transform 0.8s ease 0.25s, opacity 0.8s ease 0.25s;
+}
+.story-scene.split.flipped .ss-text {
+  transform: translateX(-20px);
+}
+.story-scene.active .ss-text {
+  transform: translateX(0); opacity: 1;
+}
+.story-scene.active.split.flipped .ss-text {
+  transform: translateX(0);
+}
+
+.ss-eyebrow {
+  font-size: 0.65rem; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 10px; display: block;
+}
+.ss-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 4.5vw, 2.4rem);
+  font-weight: 300; font-style: italic;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: 14px;
+}
+.ss-desc {
+  font-size: clamp(0.82rem, 2vw, 0.95rem);
+  color: var(--text-dim); line-height: 1.75;
+  font-weight: 300;
+}
+.ss-quote {
+  margin-top: 16px;
+  font-size: clamp(0.82rem, 2vw, 0.9rem);
+  color: var(--rose);
+  font-style: italic; line-height: 1.65;
+  padding-left: 14px;
+  border-left: 2px solid var(--rose-dim);
+  font-weight: 300;
+}
+.ss-line {
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 14px 0;
+  transition: width 0.9s ease 0.4s;
+}
+.story-scene.active .ss-line { width: 60px; }
+
+/* Future chapter placeholder */
+.ss-future .ss-headline { opacity: 0.5; }
+.ss-future .ss-desc { opacity: 0.45; }
+.ss-future .ss-photo-wrap { opacity: 0.4 !important; border-style: dashed; }
+
+/* Centered header scene */
+.ss-center-glyph {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  opacity: 0; transform: scale(0.6);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34,1.56,0.64,1);
+  margin-bottom: 22px;
+  filter: drop-shadow(0 0 28px rgba(201,138,138,0.6));
+}
+.story-scene.active .ss-center-glyph { opacity: 1; transform: scale(1); }
+.ss-center-eyebrow {
   font-size: 0.7rem; letter-spacing: 5px;
   text-transform: uppercase; color: var(--gold);
   margin-bottom: 14px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+}
+.ss-center-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 300; font-style: italic;
+  color: var(--text); text-align: center;
+  line-height: 1.2;
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.8s ease 0.25s, transform 0.8s ease 0.25s;
+  max-width: 560px;
+}
+.ss-center-sub {
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  color: var(--text-dim); text-align: center;
+  max-width: 420px; line-height: 1.75;
+  margin-top: 18px; font-weight: 300;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.8s ease 0.35s, transform 0.8s ease 0.35s;
+}
+.ss-center-line {
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px auto 0;
+  transition: width 0.9s ease 0.35s;
+}
+.story-scene.active .ss-center-eyebrow,
+.story-scene.active .ss-center-headline,
+.story-scene.active .ss-center-sub { opacity:1; transform:translateY(0); }
+.story-scene.active .ss-center-line { width: 100px; }
+
+/* Progress bar at bottom of story page */
+#story-progress-wrap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--border); z-index: 10;
+}
+#story-progress-bar {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  transition: width 0.1s linear;
+}
+
+/* ─────────────────────────────────────────
+   PAGE 2 — VALENTINE
+───────────────────────────────────────── */
+#page-letter { background: var(--bg2); }
+
+.page-header {
+  padding: 56px 28px 32px; text-align: center;
+}
+.page-header-eyebrow {
+  font-size: 0.7rem; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
 }
 .page-header h1 {
   font-family: 'Cormorant Garamond', serif;
@@ -344,123 +449,18 @@ html, body {
   font-weight: 300; font-style: italic;
   color: var(--text); line-height: 1.2;
 }
-.page-header p {
-  font-size: 0.9rem; color: var(--text-dim);
-  margin-top: 10px; font-weight: 300;
-}
+.page-header p { font-size: 0.9rem; color: var(--text-dim); margin-top: 10px; font-weight: 300; }
 
-/* timeline */
-.tl-wrap { padding: 10px 20px 30px; position: relative; }
-
-.tl-spine {
-  position: absolute; left: 50%; top: 0; bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--gold-dim) 15%, var(--gold) 50%, var(--gold-dim) 85%, transparent);
-  transform: translateX(-50%);
-}
-
-.tl-entry {
-  display: flex; align-items: flex-start;
-  margin-bottom: 40px; position: relative;
-  opacity: 0; transform: translateY(22px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.tl-entry.vis { opacity:1; transform:translateY(0); }
-.tl-entry:nth-child(odd)  { flex-direction: row; }
-.tl-entry:nth-child(even) { flex-direction: row-reverse; }
-
-.tl-dot {
-  position: absolute; left: 50%; top: 16px;
-  transform: translateX(-50%);
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--gold); border: 2px solid var(--bg2);
-  box-shadow: 0 0 0 3px var(--gold-glow), 0 0 14px rgba(226,185,122,0.3);
-  z-index: 2; transition: transform 0.3s, box-shadow 0.3s;
-}
-.tl-entry:hover .tl-dot {
-  transform: translateX(-50%) scale(1.6);
-  box-shadow: 0 0 0 5px var(--gold-glow), 0 0 22px rgba(226,185,122,0.35);
-}
-
-.tl-card {
-  width: calc(50% - 22px);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px; overflow: hidden;
-  cursor: pointer;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-.tl-entry:nth-child(odd)  .tl-card { margin-left:auto; margin-right:22px; }
-.tl-entry:nth-child(even) .tl-card { margin-right:auto; margin-left:22px; }
-.tl-card:hover {
-  border-color: var(--border2);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 24px var(--gold-glow);
-}
-
-.tl-photo {
-  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
-}
-.tl-placeholder {
-  width: 100%; aspect-ratio: 4/3;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--bg3), var(--surface3));
-  font-size: 1.8rem; gap: 5px; color: var(--gold-dim);
-}
-.tl-placeholder span { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; }
-
-.tl-body { padding: 14px 15px 15px; }
-.tl-date {
-  font-size: 0.65rem; text-transform: uppercase;
-  letter-spacing: 2.5px; color: var(--gold);
-  margin-bottom: 5px; font-weight: 500;
-}
-.tl-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem; font-weight: 600;
-  color: var(--text); margin-bottom: 5px; line-height: 1.3;
-}
-.tl-desc { font-size: 0.82rem; line-height: 1.55; color: var(--text-dim); margin:0; font-weight:300; }
-
-.tl-expand {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  opacity: 0;
-}
-.tl-expand.open {
-  max-height: 200px; opacity: 1;
-  border-top: 1px solid var(--border);
-  margin-top: 10px; padding-top: 10px;
-}
-.tl-expand p { font-size: 0.82rem; font-style: italic; color: var(--rose); line-height: 1.6; margin:0; font-weight:300; }
-
-.tl-hint {
-  font-size: 0.65rem; color: var(--text-muted);
-  margin-top: 8px; text-align: right; letter-spacing: 0.5px;
-  transition: color 0.3s;
-}
-.tl-card:hover .tl-hint { color: var(--gold); }
-
-/* ─────────────────────────────────────────
-   PAGE 2 — A LETTER TO YOU
-───────────────────────────────────────── */
-#page-letter { background: var(--bg2); }
-
-/* accordion items */
 .accordion {
   margin: 0 20px 16px;
-  border: 1px solid var(--border);
-  border-radius: 14px; overflow: hidden;
-  background: var(--surface);
+  border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; background: var(--surface);
   transition: border-color 0.3s;
 }
 .accordion.open { border-color: var(--border2); }
-
 .accordion-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 22px; cursor: pointer;
-  user-select: none;
+  padding: 20px 22px; cursor: pointer; user-select: none;
 }
 .accordion-title {
   font-family: 'Cormorant Garamond', serif;
@@ -473,15 +473,11 @@ html, body {
   flex-shrink: 0; margin-left: 12px;
 }
 .accordion.open .accordion-icon { transform: rotate(45deg); }
-
 .accordion-body {
   max-height: 0; overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease; opacity: 0;
 }
-.accordion.open .accordion-body {
-  max-height: 600px; opacity: 1;
-}
+.accordion.open .accordion-body { max-height: 600px; opacity: 1; }
 .accordion-inner {
   padding: 0 22px 22px;
   border-top: 1px solid var(--border);
@@ -489,39 +485,28 @@ html, body {
 }
 .accordion-inner p {
   font-size: 1.05rem; line-height: 1.85;
-  color: var(--text-dim); font-weight: 300;
-  margin-bottom: 12px;
+  color: var(--text-dim); font-weight: 300; margin-bottom: 12px;
 }
 .accordion-inner p:last-child { margin-bottom: 0; }
 
-/* Valentine card */
 .val-card {
   margin: 0 20px 20px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
+  border-radius: 18px; overflow: hidden;
 }
-.val-card-header {
-  padding: 28px 28px 24px; text-align: center;
-}
+.val-card-header { padding: 28px 28px 24px; text-align: center; }
 .val-card-glyph { font-size: 2.4rem; filter: drop-shadow(0 0 18px rgba(201,138,138,0.55)); }
 .val-card-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem; font-style: italic; font-weight: 300;
   color: var(--text); margin-top: 12px; line-height: 1.3;
 }
-.val-card-sub {
-  font-size: 0.88rem; color: var(--text-dim);
-  margin-top: 8px; font-weight: 300;
-}
-
+.val-card-sub { font-size: 0.88rem; color: var(--text-dim); margin-top: 8px; font-weight: 300; }
 .val-btns {
   display: flex; gap: 14px; justify-content: center;
-  padding: 0 28px 28px; position: relative; min-height: 90px;
-  align-items: center;
+  padding: 0 28px 28px; position: relative; min-height: 90px; align-items: center;
 }
-
 .btn-yes {
   font-family: 'Inter', sans-serif;
   font-size: 1rem; font-weight: 500;
@@ -533,7 +518,6 @@ html, body {
   transition: all 0.3s ease;
 }
 .btn-yes:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(226,185,122,0.42); }
-
 .btn-no {
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem; font-weight: 400;
@@ -543,7 +527,6 @@ html, body {
   border-radius: 50px; cursor: pointer;
   transition: all 0.3s ease; z-index: 1;
 }
-
 .btn-no.flee {
   position: absolute !important;
   transition: all 0.12s ease-out !important;
@@ -554,15 +537,11 @@ html, body {
   0%,100% { box-shadow: 0 0 0 0 rgba(201,138,138,0.3); }
   50%      { box-shadow: 0 0 0 6px rgba(201,138,138,0); }
 }
-
-/* yes reveal */
 .val-reveal {
   max-height: 0; overflow: hidden; opacity: 0;
   transition: max-height 0.9s ease, opacity 0.9s ease, margin 0.9s ease;
 }
-.val-reveal.open {
-  max-height: 700px; opacity: 1; margin-top: 0;
-}
+.val-reveal.open { max-height: 700px; opacity: 1; margin-top: 0; }
 .val-reveal-inner {
   padding: 0 28px 32px;
   border-top: 1px solid var(--border);
@@ -593,20 +572,16 @@ html, body {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   padding: 60px 28px 40px;
-  text-align: center;
-  position: relative;
+  text-align: center; position: relative;
 }
-
 .cd-glow {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse at 50% 65%, rgba(226,185,122,0.07) 0%, transparent 68%);
   pointer-events: none;
 }
-
 .cd-eyebrow {
   font-size: 0.7rem; letter-spacing: 5px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 14px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
 }
 .cd-title {
   font-family: 'Cormorant Garamond', serif;
@@ -614,69 +589,43 @@ html, body {
   font-weight: 300; font-style: italic;
   color: var(--text); line-height: 1.2; margin-bottom: 8px;
 }
-.cd-date {
-  font-size: 0.85rem; color: var(--gold);
-  letter-spacing: 2px; margin-bottom: 40px; font-weight: 500;
-}
-
+.cd-date { font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 40px; font-weight: 500; }
 .cd-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 10px; width: 100%; max-width: 480px; margin: 0 auto;
 }
 .cd-unit {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--surface); border: 1px solid var(--border);
   border-radius: 14px; padding: 18px 8px;
   display: flex; flex-direction: column; align-items: center; gap: 6px;
   transition: border-color 0.3s;
 }
 .cd-unit:hover { border-color: var(--border2); }
-
 .cd-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.4rem; font-weight: 300;
   color: var(--gold); line-height: 1;
   text-shadow: 0 0 24px rgba(226,185,122,0.45);
 }
-.cd-label {
-  font-size: 0.6rem; text-transform: uppercase;
-  letter-spacing: 2px; color: var(--text-muted);
-}
-
-/* since counter */
+.cd-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
 .since-card {
   margin: 0 20px 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px; padding: 30px 24px;
-  text-align: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 30px 24px; text-align: center;
 }
-.since-label {
-  font-size: 0.7rem; text-transform: uppercase;
-  letter-spacing: 3px; color: var(--gold-dim); margin-bottom: 14px;
-}
+.since-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold-dim); margin-bottom: 14px; }
 .since-main {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.6rem; font-weight: 300;
-  color: var(--gold); margin-bottom: 6px;
+  font-size: 2.6rem; font-weight: 300; color: var(--gold); margin-bottom: 6px;
 }
-.since-detail {
-  font-size: 0.82rem; color: var(--text-muted); font-weight: 300;
-}
-.since-desc {
-  font-size: 0.95rem; color: var(--text-dim);
-  margin-top: 16px; line-height: 1.7; font-weight: 300;
-  font-style: italic;
-}
+.since-detail { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
+.since-desc { font-size: 0.95rem; color: var(--text-dim); margin-top: 16px; line-height: 1.7; font-weight: 300; font-style: italic; }
 
-/* ─────────────────────────────────────────
-   SHARED UTILITIES
-───────────────────────────────────────── */
+/* ── UTILS ── */
 .divider {
   height: 1px; margin: 0 20px 24px;
   background: linear-gradient(90deg, transparent, var(--border2), transparent);
 }
-
 .click-heart {
   position: fixed; pointer-events: none;
   font-size: 24px; z-index: 9999;
@@ -687,8 +636,6 @@ html, body {
   50%  { opacity:1; transform:scale(1.4) rotate(180deg); }
   100% { opacity:0; transform:scale(0.8) rotate(360deg); }
 }
-
-/* noise grain overlay */
 body::after {
   content: '';
   position: fixed; inset: 0;
@@ -697,15 +644,12 @@ body::after {
 }
 
 @media (max-width: 480px) {
-  .tl-spine { display:none; }
-  .tl-entry,
-  .tl-entry:nth-child(even) { flex-direction:column; align-items:center; }
-  .tl-card,
-  .tl-entry:nth-child(odd) .tl-card,
-  .tl-entry:nth-child(even) .tl-card { width:92%; margin:0 auto; }
-  .tl-dot { display:none; }
+  .story-scene.split { flex-direction: column !important; gap: 16px; }
+  .ss-photo-wrap { width: min(70vw, 180px) !important; }
+  .ss-photo { aspect-ratio: 4/3 !important; }
+  .ss-photo-placeholder { aspect-ratio: 4/3 !important; }
   .cd-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
-  #story-dots { display:none; }
+  #story-dots, #story-dots-2 { display:none; }
 }
 </style>
 </head>
@@ -719,16 +663,18 @@ body::after {
   <button class="splash-btn" onclick="enterApp()">Open ♡</button>
 </div>
 
+<!-- GLOBAL PARTICLE LAYER — fixed behind all pages -->
+<canvas id="particle-canvas" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:500;opacity:0.55;"></canvas>
+
 <!-- APP -->
-<div id="app">
+<div id="app" style="z-index:1;">
   <div id="pages">
 
-    <!-- ══ PAGE 0: INTRO / SCROLLYTELLING ══ -->
+    <!-- ══ PAGE 0: INTRO ══ -->
     <div class="page active" id="page-intro">
       <div id="scroll-story">
         <div id="story-sticky">
-          <canvas id="particle-canvas"></canvas>
-
+          <!-- particle canvas is global, see body -->
           <div id="story-dots">
             <div class="sdot active"></div>
             <div class="sdot"></div>
@@ -737,172 +683,166 @@ body::after {
             <div class="sdot"></div>
             <div class="sdot"></div>
           </div>
-
           <div id="scroll-hint">
             <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             scroll
           </div>
 
-          <!-- Scene 0 -->
           <div class="scene active" id="sc0">
             <div class="scene-glyph">♡</div>
             <div class="scene-eyebrow"><p id="currentDate"></p></div>
             <div class="scene-headline">To My Pyari Bana</div>
             <div class="scene-line"></div>
-           <!-- <div class="scene-sub">A story told in moments.</div>-->
           </div>
-
-          <!-- Scene 1 -->
           <div class="scene" id="sc1">
-            <div class="scene-eyebrow">November 2024</div>
-            <div class="scene-headline">It started with<br>one message.</div>
+            <div class="scene-eyebrow">November 3, 2024</div>
+            <div class="scene-headline">It started with<br>one meme <br> (shared by you).</div>
             <div class="scene-line"></div>
-            <div class="scene-sub">Neither of us knew what that first conversation would become. But something about it felt different from the start.</div>
+            <div class="scene-sub">Neither of us knew what that first conversation would become.</div>
           </div>
-
-          <!-- Scene 2 -->
           <div class="scene" id="sc2">
-            <div class="scene-eyebrow">Bhimtaal</div>
-            <div class="scene-headline">Then came the moment<br>everything shifted.</div>
+            <div class="scene-eyebrow">November - December 2025</div>
+            <div class="scene-headline"> Call of Duty <br> Skribble.io <br> Ludo </div>
             <div class="scene-line"></div>
-            <div class="scene-sub">Some places stay with you. Some trips change something quietly, permanently.</div>
+            <div class="scene-sub"></div>
           </div>
-
-          <!-- Scene 3 -->
           <div class="scene" id="sc3">
             <div class="scene-eyebrow">Canada · India</div>
-            <div class="scene-headline">Oceans apart.<br>Still the first<br>person I think of.</div>
+            <div class="scene-headline">Oceans Apart.<br>Talking all day<br></div>
             <div class="scene-line"></div>
-            <div class="scene-sub">Time zones don't care about feelings. Late nights and early mornings became the best parts of my day.</div>
+            <div class="scene-sub">Call of duty became the best part of my day.</div>
           </div>
-
-          <!-- Scene 4 -->
           <div class="scene" id="sc4">
-            <div class="scene-eyebrow">Today</div>
-            <div class="scene-headline">So here I am,<br>still choosing you.</div>
+            <div class="scene-eyebrow">January 2, 2026</div>
+            <div class="scene-headline">Our First Actual Meeting<br></div>
             <div class="scene-line"></div>
-            <div class="scene-sub">Not perfectly. Not without nerves. But with everything I have — and everything I'm still learning to be.</div>
+            <div class="scene-sub">Nerves. Excitement. Cuddles. Cute</div>
           </div>
-
-          <!-- Scene 5 -->
           <div class="scene" id="sc5">
+            <div class="scene-eyebrow">Today</div>
             <div class="scene-glyph">💕</div>
-            <div class="scene-headline">Happy Valentine's Day,<br>Bana.</div>
+            <div class="scene-headline">Every notification from you still makes me wanna jump<br></div>
             <div class="scene-line"></div>
             <div class="scene-sub">Explore the rest below — there's more waiting for you ♡</div>
           </div>
-
         </div>
       </div>
     </div>
 
-    <!-- ══ PAGE 1: OUR STORY ══ -->
+    <!-- ══ PAGE 1: OUR STORY — SCROLLYTELLING ══ -->
     <div class="page" id="page-story">
-      <div class="page-header">
-        <div class="page-header-eyebrow">A Timeline</div>
-        <h1>Our Story So Far</h1>
-        <p>Tap any memory to read what it meant to me</p>
-      </div>
+      <div id="story-scroll">
+        <div id="story-sticky-2">
 
-      <div class="tl-wrap">
-        <div class="tl-spine"></div>
+          <div id="story-dots-2">
+            <div class="sdot active"></div>
+            <div class="sdot"></div>
+            <div class="sdot"></div>
+            <div class="sdot"></div>
+            <div class="sdot"></div>
+            <div class="sdot"></div>
+          </div>
 
-        <div class="tl-entry" id="te1">
-          <div class="tl-dot"></div>
-          <div class="tl-card" onclick="expandTl('te1')">
-            <img class="tl-photo" src="https://i.imgur.com/IyMsuxT_d.webp?maxwidth=760&fidelity=grand" alt="January 2026" style="object-fit: contain; max-height: 400px; ">
-            <div class="tl-body">
-              <div class="tl-date">January 2026 - Mussourie Misty Mount</div>
-              <div class="tl-title">Bla Bla</div>
-              <p class="tl-desc">Bla Bla</p>
-              <div class="tl-expand" id="exp-te1">
-                <p>"Bla Bla"</p>
-              </div>
-              <div class="tl-hint">tap to read more ♡</div>
+          <div id="scroll-hint-2">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            scroll
+          </div>
+
+          <div id="story-progress-wrap">
+            <div id="story-progress-bar"></div>
+          </div>
+
+          <!-- Scene 0 — Header -->
+          <div class="story-scene centered active" id="ss0">
+            <div class="ss-center-glyph">📖</div>
+            <div class="ss-center-eyebrow">A Timeline</div>
+            <div class="ss-center-headline">Our Story So Far</div>
+            <div class="ss-center-line"></div>
+            <div class="ss-center-sub">Scroll through the memories.</div>
+          </div>
+
+          <!-- Scene 1 — Misty Mount -->
+          <div class="story-scene split" id="ss1">
+            <div class="ss-photo-wrap">
+              <img class="ss-photo" src="https://i.imgur.com/IyMsuxT_d.webp?maxwidth=760&fidelity=grand" alt="Mussourie Misty Mount" style="object-fit:contain;">
+            </div>
+            <div class="ss-text">
+              <span class="ss-eyebrow">January 2026 · Mussourie</span>
+              <div class="ss-line"></div>
+              <div class="ss-headline">Misty Mount</div>
+              <p class="ss-desc">Nice View, First Fight, Blue Eyes, Tussi Jithe Vi Jaune Ho, </p>
+              <p class="ss-quote">"Koi Kutta Hi Hoga Jiski Hoodie Yaha Padi Hai x 5"</p>
             </div>
           </div>
-        </div>
 
-        <div class="tl-entry" id="te2">
-          <div class="tl-dot"></div>
-          <div class="tl-card" onclick="expandTl('te2')">
-            <img class="tl-photo" src="https://i.imgur.com/MLmmacU.jpeg" alt="January 2026" style="object-fit: contain; max-height: 400px; ">
-            <div class="tl-body">
-              <div class="tl-date">January 2026 — Mussourie</div>
-              <div class="tl-title">Bla</div>
-              <p class="tl-desc">Bla</p>
-              <div class="tl-expand" id="exp-te2">
-                <p>"Bla"</p>
-              </div>
-              <div class="tl-hint">tap to read more ♡</div>
+          <!-- Scene 2 — Mussourie flipped -->
+          <div class="story-scene split flipped" id="ss2">
+            <div class="ss-photo-wrap">
+              <img class="ss-photo" src="https://i.imgur.com/MLmmacU.jpeg" alt="Mussourie" style="object-fit:contain;">
+            </div>
+            <div class="ss-text">
+              <span class="ss-eyebrow">January 2026 · Mussourie</span>
+              <div class="ss-line"></div>
+              <div class="ss-headline">Bla</div>
+              <p class="ss-desc">Bla</p>
+              <p class="ss-quote">"Bla"</p>
             </div>
           </div>
-        </div>
 
-        <div class="tl-entry" id="te3">
-          <div class="tl-dot"></div>
-          <div class="tl-card" onclick="expandTl('te3')">
-            <img class="tl-photo" src="https://i.imgur.com/lkUplAy.jpeg" alt="February 2026" style="object-fit: contain; max-height: 400px; ">
-            <div class="tl-body">
-              <div class="tl-date">February 2026 - Bhimtaal/Mussourie</div>
-              <div class="tl-title">Bla </div>
-              <p class="tl-desc">Bla.</p>
-              <div class="tl-expand" id="exp-te3">
-                <p>"Bla."</p>
-              </div>
-              <div class="tl-hint">tap to read more ♡</div>
+          <!-- Scene 3 -->
+          <div class="story-scene split" id="ss3">
+            <div class="ss-photo-wrap">
+              <img class="ss-photo" src="https://i.imgur.com/lkUplAy.jpeg" alt="Bhimtaal" style="object-fit:contain;">
+            </div>
+            <div class="ss-text">
+              <span class="ss-eyebrow">February 2026 · Bhimtaal / Mussourie</span>
+              <div class="ss-line"></div>
+              <div class="ss-headline">Bla</div>
+              <p class="ss-desc">Bla.</p>
+              <p class="ss-quote">"Bla."</p>
             </div>
           </div>
-        </div>
 
-        <div class="tl-entry" id="te4">
-          <div class="tl-dot"></div>
-          <div class="tl-card" onclick="expandTl('te4')">
-            <img class="tl-photo" src="https://i.imgur.com/vRJ7ivD.jpeg" alt="February 2026" style="object-fit: contain; max-height: 400px; ">
-            <div class="tl-body">
-              <div class="tl-date">February 2026 - Noida</div>
-              <div class="tl-title">Bla</div>
-              <p class="tl-desc">Bla.</p>
-              <div class="tl-expand" id="exp-te4">
-                <p>"Bla."</p>
-              </div>
-              <div class="tl-hint">tap to read more ♡</div>
+          <!-- Scene 4 — flipped -->
+          <div class="story-scene split flipped" id="ss4">
+            <div class="ss-photo-wrap">
+              <img class="ss-photo" src="https://i.imgur.com/vRJ7ivD.jpeg" alt="Noida" style="object-fit:contain;">
+            </div>
+            <div class="ss-text">
+              <span class="ss-eyebrow">February 2026 · Noida</span>
+              <div class="ss-line"></div>
+              <div class="ss-headline">Bla</div>
+              <p class="ss-desc">Bla.</p>
+              <p class="ss-quote">"Bla."</p>
             </div>
           </div>
-        </div>
 
-        <div class="tl-entry" id="te5">
-          <div class="tl-dot" style="background:var(--gold-dim);"></div>
-          <div class="tl-card" onclick="expandTl('te5')" style="border-style:dashed;opacity:0.7;">
-            <img class="tl-photo" src="https://i.imgur.com/ZlEMGcr.jpeg" alt="February 2026" style="object-fit: contain; max-height: 400px; ">
-            <div class="tl-body">
-              <div class="tl-date" style="color:var(--gold-dim);">February 2026 - Canada/India</div>
-              <div class="tl-title" style="opacity:0.7;">Video Call</div>
-              <p class="tl-desc" style="opacity:0.6;">Bla </p>
-              <div class="tl-expand" id="exp-te5">
-                <p>"Bla."</p>
-              </div>
-              <div class="tl-hint">tap to read more ♡</div>
+          <!-- Scene 5 — Video call -->
+          <div class="story-scene split ss-future" id="ss5">
+            <div class="ss-photo-wrap">
+              <img class="ss-photo" src="https://i.imgur.com/ZlEMGcr.jpeg" alt="Video Call" style="object-fit:contain;">
+            </div>
+            <div class="ss-text">
+              <span class="ss-eyebrow">February 2026 · Canada / India</span>
+              <div class="ss-line"></div>
+              <div class="ss-headline">Video Call</div>
+              <p class="ss-desc">Bla</p>
+              <p class="ss-quote">"Bla."</p>
             </div>
           </div>
-        </div>
 
-        <div class="tl-entry" id="te6">
-          <div class="tl-dot" style="background:var(--gold-dim);"></div>
-          <div class="tl-card" onclick="expandTl('te5')" style="border-style:dashed;opacity:0.7;">
-            <div class="tl-placeholder" style="opacity:0.5;">🌸<span>Coming soon</span></div>
-            <div class="tl-body">
-              <div class="tl-date" style="color:var(--gold-dim);">April 2026</div>
-              <div class="tl-title" style="opacity:0.7;">The Next Chapter</div>
-              <p class="tl-desc" style="opacity:0.6;">Bla.</p>
-              <div class="tl-expand" id="exp-te5">
-                <p>"Bla."</p>
-              </div>
-              <div class="tl-hint">tap to read more ♡</div>
+          <!-- Scene 6 — Coming soon -->
+          <div class="story-scene centered ss-future" id="ss6">
+            <div class="ss-photo-wrap" style="width:min(55vw,200px); aspect-ratio:1; border-radius:50%;">
+              <div class="ss-photo-placeholder" style="aspect-ratio:1; border-radius:50%; font-size:3rem;">🌸<span>Coming soon</span></div>
             </div>
+            <div class="ss-center-eyebrow" style="margin-top:28px;">April 2026</div>
+            <div class="ss-center-headline" style="opacity:0.5;">The Next Chapter</div>
+            <div class="ss-center-line"></div>
+            <div class="ss-center-sub" style="opacity:0.45;">Bla.</div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
 
@@ -942,19 +882,16 @@ body::after {
 
       <div class="divider"></div>
 
-      <!-- Valentine Card -->
       <div class="val-card">
         <div class="val-card-header">
           <div class="val-card-glyph">💕</div>
           <div class="val-card-title">Will you be my Valentine?</div>
           <div class="val-card-sub">Only one right answer here.</div>
         </div>
-
         <div class="val-btns" id="valBtns">
           <button class="btn-yes" id="btnYes" onclick="handleYes()">Yes, always 💖</button>
           <button class="btn-no"  id="btnNo"  onclick="handleNo()" onmouseenter="escapeNo()"><span id="noTxt">No</span></button>
         </div>
-
         <div class="val-reveal" id="valReveal">
           <div class="val-reveal-inner">
             <img id="ourPhoto" src="" alt="Us" class="val-photo">
@@ -965,7 +902,6 @@ body::after {
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- ══ PAGE 3: COUNTDOWN ══ -->
@@ -975,7 +911,6 @@ body::after {
         <div class="cd-eyebrow">The Wait</div>
         <div class="cd-title">Until We're in the<br>Same Room Again</div>
         <div class="cd-date">April 11, 2026</div>
-
         <div class="cd-grid">
           <div class="cd-unit"><span class="cd-num" id="cdDays">0</span><span class="cd-label">Days</span></div>
           <div class="cd-unit"><span class="cd-num" id="cdHours">0</span><span class="cd-label">Hours</span></div>
@@ -983,19 +918,16 @@ body::after {
           <div class="cd-unit"><span class="cd-num" id="cdSecs">0</span><span class="cd-label">Secs</span></div>
         </div>
       </div>
-
       <div class="since-card">
         <div class="since-label">Time Since We Started Talking</div>
         <div class="since-main" id="sinceMain">...</div>
         <div class="since-detail" id="sinceDetail">...</div>
         <div class="since-desc">"And every single moment has reminded me how special you are."</div>
       </div>
-
     </div>
 
   </div><!-- /pages -->
 
-  <!-- BOTTOM NAV -->
   <nav id="nav">
     <button class="nav-item active" onclick="goTo(0)" id="ni0">
       <span class="nav-icon">✦</span>
@@ -1007,7 +939,6 @@ body::after {
       <span class="nav-label">Our Story</span>
       <span class="nav-pip"></span>
     </button>
-
     <button class="nav-item" onclick="goTo(2)" id="ni2">
       <span class="nav-icon">💌</span>
       <span class="nav-label">Valentine</span>
@@ -1019,7 +950,7 @@ body::after {
       <span class="nav-pip"></span>
     </button>
   </nav>
-</div><!-- /app -->
+</div>
 
 <script>
 /* ══ SPLASH ══ */
@@ -1029,8 +960,11 @@ function enterApp() {
   app.classList.add('visible');
   initParticles();
   initStory();
-  initTimeline();
+  initStoryPage();
   startCounters();
+  const today = new Date();
+  document.getElementById('currentDate').textContent =
+    today.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
 }
 
 /* ══ NAVIGATION ══ */
@@ -1041,11 +975,9 @@ function goTo(idx) {
   if (idx === currentPage) return;
   const prev = document.getElementById(pageIds[currentPage]);
   const next = document.getElementById(pageIds[idx]);
-
   prev.classList.remove('active');
   prev.classList.add(idx > currentPage ? 'exit-left' : 'exit-right');
   setTimeout(() => prev.classList.remove('exit-left','exit-right'), 500);
-
   next.style.transform = idx > currentPage ? 'translateX(30px)' : 'translateX(-30px)';
   next.style.opacity = '0';
   requestAnimationFrame(() => {
@@ -1053,17 +985,16 @@ function goTo(idx) {
     next.style.transform = '';
     next.style.opacity = '';
   });
-
   document.querySelectorAll('.nav-item').forEach((n,i) => n.classList.toggle('active', i===idx));
   currentPage = idx;
 }
 
-/* ══ SCROLLYTELLING ══ */
+/* ══ INTRO SCROLLYTELLING ══ */
 function initStory() {
   const story  = document.getElementById('scroll-story');
   const page   = document.getElementById('page-intro');
-  const scenes = document.querySelectorAll('.scene');
-  const dots   = document.querySelectorAll('.sdot');
+  const scenes = document.querySelectorAll('#page-intro .scene');
+  const dots   = document.querySelectorAll('#story-dots .sdot');
   const hint   = document.getElementById('scroll-hint');
   const N = scenes.length;
 
@@ -1072,22 +1003,45 @@ function initStory() {
     const total = story.offsetHeight - page.clientHeight;
     const p = Math.max(0, Math.min(1, scrolled / total));
     const idx = Math.min(N-1, Math.round(p * (N-1)));
-
     scenes.forEach((s,i) => s.classList.toggle('active', i===idx));
     dots.forEach((d,i)   => d.classList.toggle('active', i===idx));
     hint.style.opacity = idx === 0 ? '1' : '0';
   }, { passive: true });
 }
 
-/* ══ PARTICLE CANVAS ══ */
+/* ══ OUR STORY PAGE SCROLLYTELLING ══ */
+function initStoryPage() {
+  const storyScroll = document.getElementById('story-scroll');
+  const page        = document.getElementById('page-story');
+  const scenes      = document.querySelectorAll('#story-sticky-2 .story-scene');
+  const dots        = document.querySelectorAll('#story-dots-2 .sdot');
+  const hint        = document.getElementById('scroll-hint-2');
+  const progressBar = document.getElementById('story-progress-bar');
+  const N = scenes.length;
+
+  page.addEventListener('scroll', () => {
+    const scrolled = page.scrollTop;
+    const total    = storyScroll.offsetHeight - page.clientHeight;
+    const p        = Math.max(0, Math.min(1, scrolled / total));
+    const idx      = Math.min(N-1, Math.round(p * (N-1)));
+
+    scenes.forEach((s,i) => s.classList.toggle('active', i===idx));
+    dots.forEach((d,i)   => d.classList.toggle('active', i===idx));
+    hint.style.opacity   = idx === 0 ? '1' : '0';
+    progressBar.style.width = (p * 100) + '%';
+  }, { passive: true });
+}
+
+/* ══ PARTICLES — global fixed canvas behind all pages ══ */
 function initParticles() {
   const canvas = document.getElementById('particle-canvas');
   const ctx = canvas.getContext('2d');
   let W, H, pts = [];
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    pts.forEach(p => { p.x = Math.random() * W; p.y = Math.random() * H; });
   }
 
   function Pt() {
@@ -1102,10 +1056,11 @@ function initParticles() {
       this.fs = Math.random() * 9 + 7;
     };
     this.reset();
-    this.y = Math.random() * H; // scatter on init
+    this.y = Math.random() * H;
   }
 
-  resize();
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
   pts = Array.from({length: 70}, () => new Pt());
   window.addEventListener('resize', resize);
 
@@ -1132,30 +1087,12 @@ function initParticles() {
   })();
 }
 
-/* ══ TIMELINE ══ */
-function initTimeline() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e,i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('vis'), i * 100);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.tl-entry').forEach(e => obs.observe(e));
-}
-
-function expandTl(id) {
-  document.getElementById('exp-' + id).classList.toggle('open');
-}
-
 /* ══ ACCORDION ══ */
 function toggleAcc(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle('open');
+  document.getElementById(id).classList.toggle('open');
 }
 
-/* ══ VALENTINE BUTTON ══ */
+/* ══ VALENTINE ══ */
 let noCount = 0, noBtnSize = 1, yesBtnSize = 1;
 const noMsgs = ["No","Are you sure? 🥺","Really? 😢","Pookie please? 🥹","I'll be very sad 😭","Pretty please? 🙏","Last chance! 💕"];
 
@@ -1245,13 +1182,6 @@ document.head.appendChild(cs);
 document.addEventListener('click', e => {
   if (!['btnYes','btnNo'].includes(e.target.id)) spawnHeart(e.clientX, e.clientY);
 });
-
-const today = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('currentDate').textContent = today.toLocaleDateString('en-US', options);
-
-
-
 </script>
 </body>
 </html>
