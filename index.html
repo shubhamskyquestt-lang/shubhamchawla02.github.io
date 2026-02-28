@@ -613,6 +613,8 @@ html, body {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 18px; padding: 30px 24px; text-align: center;
 }
+
+
 .since-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold-dim); margin-bottom: 14px; }
 .since-main {
   font-family: 'Cormorant Garamond', serif;
@@ -620,6 +622,251 @@ html, body {
 }
 .since-detail { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
 .since-desc { font-size: 0.95rem; color: var(--text-dim); margin-top: 16px; line-height: 1.7; font-weight: 300; font-style: italic; }
+
+/* Progress bar */
+.cd-progress-wrap {
+  margin: 24px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+}
+.cd-progress-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.cd-progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: var(--surface2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.cd-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 12px rgba(226,185,122,0.4);
+}
+.cd-progress-text {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.cd-progress-percent {
+  color: var(--gold);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Weather card */
+.weather-card {
+  margin: 24px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 24px;
+}
+.weather-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-style: bold;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.weather-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.weather-location {
+  text-align: center;
+}
+.weather-city {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold-dim);
+  margin-bottom: 8px;
+}
+.weather-temp {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.weather-condition {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+.weather-divider {
+  font-size: 1.5rem;
+  color: var(--border2);
+}
+.weather-message {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 480px) {
+  .weather-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .weather-divider { display: none; }
+}
+
+/* Bucket list */
+.bucket-card {
+  margin: 0 20px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 24px;
+}
+.bucket-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.bucket-glyph {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 18px rgba(226,185,122,0.5));
+  margin-bottom: 10px;
+}
+.bucket-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.bucket-sub {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.bucket-input-wrap {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.bucket-input {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+}
+.bucket-input::placeholder {
+  color: var(--text-muted);
+}
+.bucket-input:focus {
+  outline: none;
+  border-color: var(--border3);
+}
+.bucket-add-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(226,185,122,0.15), rgba(226,185,122,0.25));
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  color: var(--gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.bucket-add-btn:hover {
+  background: rgba(226,185,122,0.3);
+  transform: translateY(-1px);
+}
+.bucket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bucket-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+.bucket-item:hover {
+  border-color: var(--border2);
+}
+.bucket-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border2);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.bucket-checkbox.checked {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.bucket-checkbox.checked::after {
+  content: '✓';
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: bold;
+}
+.bucket-text {
+  flex: 1;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+.bucket-item.checked .bucket-text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.bucket-delete {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+.bucket-delete:hover {
+  color: var(--rose);
+}
+.bucket-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 30px 20px;
+  font-style: italic;
+}
+
 
 /* ── UTILS ── */
 .divider {
@@ -917,15 +1164,20 @@ body::after {
 
       <div class="divider"></div>
 
-      <div class="val-card">
-        <div class="val-card-header">
-          <div class="val-card-glyph">💕</div>
-          <div class="val-card-title">Will you be my Valentine?</div>
+      <div class="accordion" id="acc3">
+  <div class="accordion-header" onclick="toggleAcc('acc3')">
+    <span class="accordion-title">Will you be my Valentine? 💕</span>
+    <span class="accordion-icon">+</span>
+  </div>
+  <div class="accordion-body">
+    <div class="accordion-inner" style="padding-top: 0;">
+      <div class="val-card" style="margin: 0; border: none; padding: 20px 0;">
+        <div class="val-card-header" style="padding-top: 0;">
           <div class="val-card-sub">Only one right answer here.</div>
         </div>
         <div class="val-btns" id="valBtns">
           <button class="btn-yes" id="btnYes" onclick="handleYes()">Yes, always 💖</button>
-          <button class="btn-no"  id="btnNo"  onclick="handleNo()" onmouseenter="escapeNo()"><span id="noTxt">No</span></button>
+          <button class="btn-no" id="btnNo" onclick="handleNo()" onmouseenter="escapeNo()"><span id="noTxt">No</span></button>
         </div>
         <div class="val-reveal" id="valReveal">
           <div class="val-reveal-inner">
@@ -938,8 +1190,31 @@ body::after {
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+      <div class="divider"></div>
+
+      <!-- ADD BUCKET LIST HERE ↓ -->
+<div class="bucket-card">
+  <div class="bucket-header">
+    <div class="bucket-glyph">✨</div>
+    <div class="bucket-title">Things to Do on April 10</div>
+    <div class="bucket-sub">Our bucket list for when we meet</div>
+  </div>
+  <div class="bucket-input-wrap">
+    <input type="text" class="bucket-input" id="bucketInput" placeholder="Add something we'll do together...">
+    <button class="bucket-add-btn" onclick="addBucketItem()">Add</button>
+  </div>
+  <div class="bucket-list" id="bucketList">
+    <div class="bucket-empty">Start adding things you want to do together! 💕</div>
+  </div>
+</div>
+
+    </div>
 
     <!-- ══ PAGE 3: COUNTDOWN ══ -->
+     
     <div class="page" id="page-countdown">
       <div class="cd-hero">
         <div class="cd-glow"></div>
@@ -953,12 +1228,47 @@ body::after {
           <div class="cd-unit"><span class="cd-num" id="cdSecs">0</span><span class="cd-label">Secs</span></div>
         </div>
       </div>
+
+      <!-- PROGRESS BAR HERE ↓ --> 
+       <div class="cd-progress-wrap">
+    <div class="cd-progress-label">Progress since 9th Feb 2026</div>
+    <div class="cd-progress-bar-bg">
+      <div class="cd-progress-bar-fill" id="cdProgressFill"></div>
+    </div>
+    <div class="cd-progress-text">
+      <span class="cd-progress-percent" id="cdProgressPercent">0%</span> complete
+    </div>
+  </div>
+
+
+  <!-- ADD WEATHER HERE ↓ -->
+  <div class="weather-card">
+    <div class="weather-title">Right Now 🌍</div>
+    <div class="weather-grid">
+      <div class="weather-location">
+        <div class="weather-city">Toronto, Canada</div>
+        <div class="weather-temp" id="weatherToronto">--°</div>
+        <div class="weather-condition" id="conditionToronto">Loading...</div>
+      </div>
+      <div class="weather-divider">|</div>
+      <div class="weather-location">
+        <div class="weather-city">Delhi, India</div>
+        <div class="weather-temp" id="weatherDelhi">--°</div>
+        <div class="weather-condition" id="conditionDelhi">Loading...</div>
+      </div>
+    </div>
+    <div class="weather-message">"We share the same sky ☁️"</div>
+  </div>
+  <!-- ADD WEATHER ABOVE ↑ -->
+
+
       <div class="since-card">
         <div class="since-label">Time Since We Started Talking</div>
         <div class="since-main" id="sinceMain">...</div>
         <div class="since-detail" id="sinceDetail">...</div>
         <div class="since-desc">"And every single moment has reminded me how special you are."</div>
       </div>
+   
     </div>
 
   </div><!-- /pages -->
@@ -997,6 +1307,7 @@ function enterApp() {
   initStory();
   initStoryPage();
   startCounters();
+  updateWeather();
   const today = new Date();
   document.getElementById('currentDate').textContent =
     today.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
@@ -1181,6 +1492,15 @@ function startCounters() {
       document.getElementById('cdHours').textContent = Math.floor((diff%86400000)/3600000);
       document.getElementById('cdMins').textContent  = Math.floor((diff%3600000)/60000);
       document.getElementById('cdSecs').textContent  = Math.floor((diff%60000)/1000);
+      // Progress bar calculation
+    const startDate = new Date('2026-02-09T00:00:00');
+    const endDate = new Date('2026-04-10T18:30:00');
+    const totalTime = endDate - startDate;
+    const elapsed = new Date() - startDate;
+    const progressPercent = Math.min(100, Math.max(0, (elapsed / totalTime) * 100));
+    
+    document.getElementById('cdProgressFill').style.width = progressPercent + '%';
+    document.getElementById('cdProgressPercent').textContent = progressPercent.toFixed(1) + '%';
     }
     const start = new Date('2025-11-03T00:00:00'), now = new Date();
     let months = (now.getFullYear()-start.getFullYear())*12+(now.getMonth()-start.getMonth());
@@ -1194,6 +1514,115 @@ function startCounters() {
   }
   tick(); setInterval(tick,1000);
 }
+/* ══ WEATHER ══ */
+async function updateWeather() {
+  try {
+    // Toronto weather (43.65°N, -79.38°W)
+    const torontoRes = await fetch('https://api.open-meteo.com/v1/forecast?latitude=43.65&longitude=-79.38&current=temperature_2m,weather_code&temperature_unit=celsius&timezone=America/Toronto');
+    const torontoData = await torontoRes.json();
+    const torontoTemp = Math.round(torontoData.current.temperature_2m);
+    const torontoCondition = getWeatherCondition(torontoData.current.weather_code);
+    document.getElementById('weatherToronto').textContent = torontoTemp + '°C';
+    document.getElementById('conditionToronto').textContent = torontoCondition;
+
+    // Delhi weather (28.61°N, 77.23°E)
+    const delhiRes = await fetch('https://api.open-meteo.com/v1/forecast?latitude=28.61&longitude=77.23&current=temperature_2m,weather_code&temperature_unit=celsius&timezone=Asia/Kolkata');
+    const delhiData = await delhiRes.json();
+    const delhiTemp = Math.round(delhiData.current.temperature_2m);
+    const delhiCondition = getWeatherCondition(delhiData.current.weather_code);
+    document.getElementById('weatherDelhi').textContent = delhiTemp + '°C';
+    document.getElementById('conditionDelhi').textContent = delhiCondition;
+  } catch (err) {
+    console.error('Weather error:', err);
+    document.getElementById('weatherToronto').textContent = '--°C';
+    document.getElementById('conditionToronto').textContent = 'Unable to load';
+    document.getElementById('weatherDelhi').textContent = '--°C';
+    document.getElementById('conditionDelhi').textContent = 'Unable to load';
+  }
+}
+
+function getWeatherCondition(code) {
+  const conditions = {
+    0: 'Clear sky ☀️',
+    1: 'Mainly clear 🌤️',
+    2: 'Partly cloudy ⛅',
+    3: 'Overcast ☁️',
+    45: 'Foggy 🌫️',
+    48: 'Foggy 🌫️',
+    51: 'Light drizzle 🌦️',
+    53: 'Drizzle 🌦️',
+    55: 'Heavy drizzle 🌧️',
+    61: 'Light rain 🌧️',
+    63: 'Rain 🌧️',
+    65: 'Heavy rain 🌧️',
+    71: 'Light snow ❄️',
+    73: 'Snow ❄️',
+    75: 'Heavy snow ❄️',
+    77: 'Snow grains ❄️',
+    80: 'Rain showers 🌧️',
+    81: 'Rain showers 🌧️',
+    82: 'Heavy rain showers 🌧️',
+    85: 'Snow showers ❄️',
+    86: 'Heavy snow showers ❄️',
+    95: 'Thunderstorm ⛈️',
+    96: 'Thunderstorm ⛈️',
+    99: 'Thunderstorm ⛈️'
+  };
+  return conditions[code] || 'Unknown';
+}
+
+/* ══ BUCKET LIST ══ */
+let bucketItems = JSON.parse(localStorage.getItem('bucketList') || '[]');
+
+function renderBucketList() {
+  const list = document.getElementById('bucketList');
+  if (bucketItems.length === 0) {
+    list.innerHTML = '<div class="bucket-empty">Start adding things you want to do together! 💕</div>';
+    return;
+  }
+  list.innerHTML = bucketItems.map((item, idx) => `
+    <div class="bucket-item ${item.done ? 'checked' : ''}">
+      <div class="bucket-checkbox ${item.done ? 'checked' : ''}" onclick="toggleBucket(${idx})"></div>
+      <div class="bucket-text">${item.text}</div>
+      <div class="bucket-delete" onclick="deleteBucket(${idx})">×</div>
+    </div>
+  `).join('');
+}
+
+function addBucketItem() {
+  const input = document.getElementById('bucketInput');
+  const text = input.value.trim();
+  if (!text) return;
+  bucketItems.push({ text, done: false });
+  localStorage.setItem('bucketList', JSON.stringify(bucketItems));
+  input.value = '';
+  renderBucketList();
+  for (let i=0;i<8;i++) setTimeout(()=>spawnHeart(Math.random()*innerWidth, Math.random()*innerHeight), i*60);
+}
+
+function toggleBucket(idx) {
+  bucketItems[idx].done = !bucketItems[idx].done;
+  localStorage.setItem('bucketList', JSON.stringify(bucketItems));
+  renderBucketList();
+}
+
+function deleteBucket(idx) {
+  bucketItems.splice(idx, 1);
+  localStorage.setItem('bucketList', JSON.stringify(bucketItems));
+  renderBucketList();
+}
+
+// Allow Enter key to add items
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('bucketInput');
+  if (input) {
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') addBucketItem();
+    });
+  }
+  renderBucketList();
+});
+
 
 /* ══ FX ══ */
 function spawnHeart(x,y) {
