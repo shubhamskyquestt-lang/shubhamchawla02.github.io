@@ -1492,18 +1492,15 @@ function escapeNo() {
 /* ══ COUNTERS ══ */
 function startCounters() {
   function tick() {
-    // Target: April 10, 2026 at 6:30 PM India Standard Time
-    const targetDate = new Date('2026-04-10T18:30:00+05:30');
-    const now = new Date();
-    const diff = targetDate - now;
+    const diff = new Date('2026-04-10T18:30:00') - new Date();
     if (diff > 0) {
       document.getElementById('cdDays').textContent  = Math.floor(diff/86400000);
       document.getElementById('cdHours').textContent = Math.floor((diff%86400000)/3600000);
       document.getElementById('cdMins').textContent  = Math.floor((diff%3600000)/60000);
       document.getElementById('cdSecs').textContent  = Math.floor((diff%60000)/1000);
       // Progress bar calculation
-    const startDate = new Date('2026-02-10T00:00:00+05:30');
-    const endDate = new Date('2026-04-10T18:30:00+05:30');
+    const startDate = new Date('2026-02-09T00:00:00');
+    const endDate = new Date('2026-04-10T18:30:00');
     const totalTime = endDate - startDate;
     const elapsed = new Date() - startDate;
     const progressPercent = Math.min(100, Math.max(0, (elapsed / totalTime) * 100));
@@ -1511,7 +1508,7 @@ function startCounters() {
     document.getElementById('cdProgressFill').style.width = progressPercent + '%';
     document.getElementById('cdProgressPercent').textContent = progressPercent.toFixed(1) + '%';
     }
-    const start = new Date('2025-11-03T00:00:00+05:30'), now = new Date();
+    const start = new Date('2025-11-03T00:00:00'), now = new Date();
     let months = (now.getFullYear()-start.getFullYear())*12+(now.getMonth()-start.getMonth());
     const after = new Date(start); after.setMonth(after.getMonth()+months);
     if (after>now){months--;after.setMonth(after.getMonth()-1);}
@@ -1658,5 +1655,3 @@ document.addEventListener('click', e => {
 </script>
 </body>
 </html>
-
-
