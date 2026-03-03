@@ -1493,7 +1493,7 @@ function escapeNo() {
 function startCounters() {
   function tick() {
      // Target: April 10, 2026 at 6:30 PM India Standard Time
-    const targetDate = new Date('2026-04-10T5:00:00+05:30');
+    const targetDate = new Date('2026-04-11T05:00:00+05:30');
     const n = new Date();
     const diff = targetDate - n;
     if (diff > 0) {
@@ -1503,7 +1503,7 @@ function startCounters() {
       document.getElementById('cdSecs').textContent  = Math.floor((diff%60000)/1000);
       // Progress bar calculation
     const startDate = new Date('2026-02-10T00:00:00+05:30');
-    const endDate = new Date('2026-04-10T5:00:00+05:30');
+    const endDate = new Date('2026-04-11T05:00:00+05:30');
     const totalTime = endDate - startDate;
     const elapsed = new Date() - startDate;
     const progressPercent = Math.min(100, Math.max(0, (elapsed / totalTime) * 100));
