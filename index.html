@@ -938,7 +938,8 @@ body::after {
           <div class="scene active" id="sc0">
             <div class="scene-glyph">♡</div>
             <div class="scene-eyebrow"><p id="currentDate"></p></div>
-            <div class="scene-headline">To My Pyari Bana</div>
+            <!-- <div class="scene-headline">To My Pyari Bana</div> -->
+            <div class="scene-headline">To Anchal </div> 
             <div class="scene-line"></div>
           </div>
           <div class="scene" id="sc1">
@@ -1135,10 +1136,11 @@ body::after {
       <div class="page-header">
         <div class="page-header-eyebrow">From Me to You</div>
         <h1>Happy Valentine's Day</h1>
-        <p>Some things needed saying first</p>
+        <!-- <p>Some things needed saying first</p> -->
       </div>
 
             <!-- ADD BUCKET LIST HERE ↓ -->
+<!--
 <div class="bucket-card">
   <div class="bucket-header">
     <div class="bucket-glyph">✨</div>
@@ -1182,7 +1184,7 @@ body::after {
         </div>
       </div>
 
-    
+    -->
 
       <div class="accordion" id="acc3">
   <div class="accordion-header" onclick="toggleAcc('acc3')">
@@ -1201,10 +1203,10 @@ body::after {
         </div>
         <div class="val-reveal" id="valReveal">
           <div class="val-reveal-inner">
-            <img id="ourPhoto" src="" alt="Us" class="val-photo">
+            <!--<img id="ourPhoto" src="" alt="Us" class="val-photo"> -->
             <p>I knew you'd say yes. 🥰</p>
             <p>"Every video call with you feels like coming home. Every laugh we share reminds me why I fell for you in the first place."</p>
-            <p>"I don't know exactly where we're going, but I know I want to figure it out with you."</p>
+            <!-- <p>"I don't know exactly where we're going, but I know I want to figure it out with you."</p> -->
             <div class="val-sign">Happy Valentine's Day ♡</div>
           </div>
         </div>
@@ -1448,8 +1450,8 @@ function toggleAcc(id) {
 let noCount = 0, noBtnSize = 1, yesBtnSize = 1;
 const noMsgs = ["No","Are you sure? 🥺","Really? 😢","Pookie please? 🥹","I'll be very sad 😭","Pretty please? 🙏","Last chance! 💕"];
 
-function handleYes() {
-  document.getElementById('ourPhoto').src = 'https://i.imgur.com/FrabQE4.jpeg';
+ function handleYes() {
+  /*document.getElementById('ourPhoto').src = 'https://i.imgur.com/FrabQE4.jpeg'; */
   document.getElementById('valBtns').style.display = 'none';
   document.getElementById('valReveal').classList.add('open');
   for (let i=0;i<25;i++) setTimeout(()=>spawnHeart(Math.random()*innerWidth, Math.random()*innerHeight), i*60);
@@ -1658,4 +1660,3 @@ document.addEventListener('click', e => {
 </script>
 </body>
 </html>
-
